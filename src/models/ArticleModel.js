@@ -3,5 +3,5 @@ const articleSchema = new Schema({
   title: { type: String },
   content: { type: String },
 });
-const Article = mongoose.model("Article", ArticleSchema);
+const Article = mongoose.model("Article", articleSchema);
 export default Article;
