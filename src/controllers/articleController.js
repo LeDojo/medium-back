@@ -13,15 +13,22 @@ const postArticle = async (req, res) => {
   try {
     const newArticle = await new Article({
       title: req.body.title,
-      content: req.body.content
-    })
-    newArticle.save();
-    res.json({newArticle, message:" has been added"
+      content: req.body.content,
     });
+    newArticle.save();
+    res.json({ newArticle, message: " has been added" });
   } catch (error) {
     res.json(error.message);
   }
-}
+};
+const getArticle = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const singleArticle = await Article.findOne({ _id: id });
+    res.json(singleArticle);
+  } catch (error) {
+    res.json(error.message);
+  }
+};
 
-
-export { getAllArticles, postArticle};
+export { getAllArticles, postArticle, getArticle };
