@@ -31,4 +31,19 @@ const getArticle = async (req, res) => {
   }
 };
 
-export { getAllArticles, postArticle, getArticle };
+// Modify article
+const putArticle = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const singleArticle = await Article.findOneAndUpdate(
+      { _id: id },
+      req.body,
+      { new: true }
+    );
+    res.json(singleArticle);
+  } catch (error) {
+    res.json(error.message);
+  }
+};
+
+export { getAllArticles, postArticle, getArticle, putArticle };
