@@ -13,6 +13,11 @@ async function main() {
 
 const port = process.env.PORT || 3456;
 
+// Afin de traduire et de pouvoir rentrer de la data -------------------
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+// ---------------------------------------------------------------------
+
 app.get("/", (req, res) => {
   res.send("Welcome");
 });
